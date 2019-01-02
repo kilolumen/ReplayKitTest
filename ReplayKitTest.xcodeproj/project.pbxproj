@@ -13,6 +13,7 @@
 		DB49519121D3773B00320084 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB49519021D3773B00320084 /* Assets.xcassets */; };
 		DB49519421D3773B00320084 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB49519221D3773B00320084 /* LaunchScreen.storyboard */; };
 		DB49519721D3773B00320084 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB49519621D3773B00320084 /* main.m */; };
+		DBFE4D9F21DCDCB0000E7835 /* DJCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE4D9E21DCDCB0000E7835 /* DJCapture.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		DB49519321D3773B00320084 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB49519521D3773B00320084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB49519621D3773B00320084 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DBFE4D9D21DCDCB0000E7835 /* DJCapture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJCapture.h; sourceTree = "<group>"; };
+		DBFE4D9E21DCDCB0000E7835 /* DJCapture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DJCapture.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				DB49518821D3773700320084 /* AppDelegate.m */,
 				DB49518A21D3773700320084 /* ViewController.h */,
 				DB49518B21D3773700320084 /* ViewController.m */,
+				DBFE4D9D21DCDCB0000E7835 /* DJCapture.h */,
+				DBFE4D9E21DCDCB0000E7835 /* DJCapture.m */,
 				DB49518D21D3773700320084 /* Main.storyboard */,
 				DB49519021D3773B00320084 /* Assets.xcassets */,
 				DB49519221D3773B00320084 /* LaunchScreen.storyboard */,
@@ -141,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFE4D9F21DCDCB0000E7835 /* DJCapture.m in Sources */,
 				DB49518C21D3773700320084 /* ViewController.m in Sources */,
 				DB49519721D3773B00320084 /* main.m in Sources */,
 				DB49518921D3773700320084 /* AppDelegate.m in Sources */,
@@ -286,7 +292,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 453YM2LWS9;
 				INFOPLIST_FILE = ReplayKitTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +310,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 453YM2LWS9;
 				INFOPLIST_FILE = ReplayKitTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
