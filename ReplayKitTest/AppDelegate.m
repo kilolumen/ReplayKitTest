@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ImageCacheProtocol.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [NSURLProtocol registerClass:[ImageCacheProtocol class]];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont systemFontOfSize:12]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor redColor], NSFontAttributeName: [UIFont systemFontOfSize:12]} forState:UIControlStateSelected];
+
+    
+
+    [[UITabBarItem appearance] setImageInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
     return YES;
 }
 

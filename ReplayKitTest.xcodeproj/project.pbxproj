@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95A052DB210B9E80C0123A61 /* libPods-ReplayKitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF57CA98B6D911AB09DFEB6 /* libPods-ReplayKitTest.a */; };
+		DB3F3C0921ED95C00048CCF8 /* ImageCacheProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3F3C0821ED95C00048CCF8 /* ImageCacheProtocol.m */; };
 		DB49518921D3773700320084 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB49518821D3773700320084 /* AppDelegate.m */; };
 		DB49518C21D3773700320084 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB49518B21D3773700320084 /* ViewController.m */; };
 		DB49518F21D3773700320084 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB49518D21D3773700320084 /* Main.storyboard */; };
@@ -17,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		293C5F8217DBCBD50F792C8A /* Pods-ReplayKitTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReplayKitTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReplayKitTest/Pods-ReplayKitTest.release.xcconfig"; sourceTree = "<group>"; };
+		4DF57CA98B6D911AB09DFEB6 /* libPods-ReplayKitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReplayKitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C147E0ABC6E96AFB44FBEAD7 /* Pods-ReplayKitTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReplayKitTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReplayKitTest/Pods-ReplayKitTest.debug.xcconfig"; sourceTree = "<group>"; };
+		DB3F3C0721ED95C00048CCF8 /* ImageCacheProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCacheProtocol.h; sourceTree = "<group>"; };
+		DB3F3C0821ED95C00048CCF8 /* ImageCacheProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCacheProtocol.m; sourceTree = "<group>"; };
 		DB49518421D3773700320084 /* ReplayKitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReplayKitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB49518721D3773700320084 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB49518821D3773700320084 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -36,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A052DB210B9E80C0123A61 /* libPods-ReplayKitTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11294961E0D9E7FCD656A288 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C147E0ABC6E96AFB44FBEAD7 /* Pods-ReplayKitTest.debug.xcconfig */,
+				293C5F8217DBCBD50F792C8A /* Pods-ReplayKitTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DB49517B21D3773700320084 = {
 			isa = PBXGroup;
 			children = (
 				DB49518621D3773700320084 /* ReplayKitTest */,
 				DB49518521D3773700320084 /* Products */,
+				11294961E0D9E7FCD656A288 /* Pods */,
+				FD763A26FEBE4234D6620F5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +84,8 @@
 				DB49518821D3773700320084 /* AppDelegate.m */,
 				DB49518A21D3773700320084 /* ViewController.h */,
 				DB49518B21D3773700320084 /* ViewController.m */,
+				DB3F3C0721ED95C00048CCF8 /* ImageCacheProtocol.h */,
+				DB3F3C0821ED95C00048CCF8 /* ImageCacheProtocol.m */,
 				DBFE4D9D21DCDCB0000E7835 /* DJCapture.h */,
 				DBFE4D9E21DCDCB0000E7835 /* DJCapture.m */,
 				DB49518D21D3773700320084 /* Main.storyboard */,
@@ -76,6 +97,14 @@
 			path = ReplayKitTest;
 			sourceTree = "<group>";
 		};
+		FD763A26FEBE4234D6620F5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DF57CA98B6D911AB09DFEB6 /* libPods-ReplayKitTest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +112,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB49519A21D3773B00320084 /* Build configuration list for PBXNativeTarget "ReplayKitTest" */;
 			buildPhases = (
+				A48147DF344E8FE04A68EE9A /* [CP] Check Pods Manifest.lock */,
 				DB49518021D3773700320084 /* Sources */,
 				DB49518121D3773700320084 /* Frameworks */,
 				DB49518221D3773700320084 /* Resources */,
@@ -141,11 +171,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A48147DF344E8FE04A68EE9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReplayKitTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DB49518021D3773700320084 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB3F3C0921ED95C00048CCF8 /* ImageCacheProtocol.m in Sources */,
 				DBFE4D9F21DCDCB0000E7835 /* DJCapture.m in Sources */,
 				DB49518C21D3773700320084 /* ViewController.m in Sources */,
 				DB49519721D3773B00320084 /* main.m in Sources */,
@@ -289,6 +345,7 @@
 		};
 		DB49519B21D3773B00320084 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C147E0ABC6E96AFB44FBEAD7 /* Pods-ReplayKitTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -307,6 +364,7 @@
 		};
 		DB49519C21D3773B00320084 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 293C5F8217DBCBD50F792C8A /* Pods-ReplayKitTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

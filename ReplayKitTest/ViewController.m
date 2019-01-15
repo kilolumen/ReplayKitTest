@@ -9,24 +9,100 @@
 #import "ViewController.h"
 #import <ReplayKit/ReplayKit.h>
 #import <VideoToolbox/VideoToolbox.h>
+#import <WebKit/WebKit.h>
+#import <SDWebImage/SDImageCache.h>
 
-@interface ViewController ()
+@interface ViewController () <UIScrollViewDelegate, UIWebViewDelegate, WKNavigationDelegate>
 
 @property (nonatomic, strong) NSString *test;
+@property (nonatomic, strong) UIView *footer;
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
 @implementation ViewController
 @synthesize test = _test;
 
+- (IBAction)clearCache:(id)sender {
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        NSLog(@"clear finish");
+    }];
+}
+
+- (void)dealloc {
+    [self.webView.scrollView removeObserver:self forKeyPath:@"contentSize" context:nil];
+    
+    // 尝试释放资源，不一定管用
+    [self.webView loadHTMLString:@"" baseURL:nil];
+    [self.webView stopLoading];
+    self.webView.delegate = nil;
+    [self.webView removeFromSuperview];
+    _webView = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"ddddddd");
-    self->_test = @"dd";
-    NSLog(@"%@", _test);
-    self.test = @"dd";
-    NSLog(@"%@", _test);
+
+    /*
+    NSSet *websiteTypes = [NSSet setWithArray:@[
+                                                WKWebsiteDataTypeDiskCache,
+                                                WKWebsiteDataTypeMemoryCache]];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
+    [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteTypes
+                                               modifiedSince:date
+                                           completionHandler:^{
+                                           }];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+    webView.navigationDelegate = self;
+     */
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    webView.backgroundColor = [UIColor whiteColor];
+    webView.delegate = self;
+    webView.scrollView.delegate = self;
+    [self.view addSubview:webView];
+    self.webView = webView;
     
+    NSString *url1 = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548071237&di=9c731ac04ceff2fc115e3034a844bbe5&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.ph.126.net%2F1BxarG_W2_0cZr3ua9pf4Q%3D%3D%2F3202340810037482562.jpg";
+    NSString *url2 = @"https://timgsa.baidu.com/timg?image&quality=80&size=b999_1000&sec=1548071138&di=ab74cb46a31ce2548155a077851e32da&imgtype=jpg&er=1&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171108%2F2cfddb197e1d494183e441bca7a5a697.jpeg";
+    NSString *url3 = @"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1200224163,1889507562&fm=26&gp=0.jpg";
+    
+    NSString *htmlString = [NSString stringWithFormat:@"<html>"
+                            "<head>"
+                            "<style type=\"text/css\">"
+                            "img{"
+                            "border: 0px;"
+                            "top: 0;"
+                            "bottom: 0;"
+                            "left: 0;"
+                            "right: 0;"
+                            "vertical-align: bottom;"
+                            "margin: 0px auto;"
+                            "max-width: 100%%;"
+                            "height: auto;"
+                            "display: block;"
+                            "}"
+                            "</style>"
+                            "</head>"
+                            "<body>"
+                            "<img src='%@' />"
+                            "<img src='%@' />"
+                            "<img src='%@' />"
+                            "</body></html>", url1, url2, url3];
+    
+//     style=\"border: 0px; vertical-align: bottom; display: block; margin: 0px auto; max-width: 100%; height: auto;\"
+    [webView loadHTMLString:htmlString baseURL:nil];
+    
+    
+    webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0);
+    
+    _footer = [[UIView alloc] initWithFrame:CGRectMake(0, webView.scrollView.contentSize.height, 200, 100)];
+    _footer.backgroundColor = [UIColor redColor];
+    [webView.scrollView addSubview:_footer];
+
+
+    [webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+    
+    /*
     NSDictionary *dict = [NSDictionary dictionary];
 //    NSLog(@"%@", dict[AVCaptureSessionInterruptionReasonKey]);
     NSInteger reason = AVCaptureSessionInterruptionReasonAudioDeviceInUseByAnotherClient;
@@ -44,8 +120,38 @@
                 NSLog(@"------------");
                 break;
         }
-
+*/
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"contentSize"]) {
+        CGRect frame = _footer.frame;
+        frame.origin.y = self.webView.scrollView.contentSize.height;
+        _footer.frame = frame;
+//
+//        self.webViewHeight = [[self.showWebView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];//通过webview的contentSize获取内容高度//
+//        self.webViewHeight = [self.showWebView.scrollView contentSize].height;
+//        CGRect newFrame = self.showWebView.frame;
+//        newFrame.size.height  = self.webViewHeight;
+//        NSLog(@"-document.body.scrollHeight-----%f",self.webViewHeight);NSLog(@"-contentSize-----%f",self.webViewHeight);
+//        [self createBtn];
+//        self.showWebView.frame = CGRectMake(0, 0, 375, self.webViewHeight);
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGRect frame = _footer.frame;
+    frame.origin.y = scrollView.contentSize.height;
+    _footer.frame = frame;
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    CGRect frame = _footer.frame;
+    frame.origin.y = webView.scrollView.contentSize.height;
+    _footer.frame = frame;
+}
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
